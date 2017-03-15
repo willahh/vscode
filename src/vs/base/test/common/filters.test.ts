@@ -230,6 +230,9 @@ suite('Filters', () => {
 		assertMatches('is', 'isValid', '^i^sValid');
 		assertMatches('is', 'ImportStatement', '^Import^Statement');
 		assertMatches('lowrd', 'lowWord', '^l^o^wWo^r^d');
+		assertMatches('ccm', 'cacmelCase', '^ca^c^melCase');
+		assertMatches('ccm', 'camelCase');
+		assertMatches('ccm', 'camelCasecm', '^camel^Casec^m');
 	});
 
 	test('topScore', function () {
@@ -251,10 +254,10 @@ suite('Filters', () => {
 			assert.equal(topIdx, expected);
 		}
 
-		// assertTopScore('Foo', 1, 'foo', 'Foo', 'foo');
+		assertTopScore('Foo', 1, 'foo', 'Foo', 'foo');
 
-		// assertTopScore('CC', 1, 'camelCase', 'CamelCase');
-		// assertTopScore('cC', 0, 'camelCase', 'CamelCase');
+		assertTopScore('CC', 1, 'camelCase', 'CamelCase');
+		assertTopScore('cC', 0, 'camelCase', 'CamelCase');
 		// assertTopScore('cC', 1, 'ccfoo', 'camelCase');
 		// assertTopScore('cC', 1, 'ccfoo', 'camelCase', 'foo-cC-bar');
 
